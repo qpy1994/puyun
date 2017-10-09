@@ -11,9 +11,6 @@ class addUser : public QDialog
 public:
 	addUser(QWidget *parent = 0);
 	~addUser();
-
-
-
 private:
 	Ui::addUser ui;
 };
