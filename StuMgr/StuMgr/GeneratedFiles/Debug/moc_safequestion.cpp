@@ -1,16 +1,16 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'forgetpwd.h'
+** Meta object code from reading C++ file 'safequestion.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../forgetpwd.h"
+#include "../../safequestion.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'forgetpwd.h' doesn't include <QObject>."
+#error "The header file 'safequestion.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.4.2. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -18,28 +18,28 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-struct qt_meta_stringdata_forgetPwd_t {
+struct qt_meta_stringdata_safeQuestion_t {
     QByteArrayData data[4];
-    char stringdata[33];
+    char stringdata[37];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_forgetPwd_t, stringdata) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_safeQuestion_t, stringdata) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_forgetPwd_t qt_meta_stringdata_forgetPwd = {
+static const qt_meta_stringdata_safeQuestion_t qt_meta_stringdata_safeQuestion = {
     {
-QT_MOC_LITERAL(0, 0, 9), // "forgetPwd"
-QT_MOC_LITERAL(1, 10, 13), // "UserAppealing"
-QT_MOC_LITERAL(2, 24, 0), // ""
-QT_MOC_LITERAL(3, 25, 7) // "editPwd"
+QT_MOC_LITERAL(0, 0, 12), // "safeQuestion"
+QT_MOC_LITERAL(1, 13, 9), // "safeCheck"
+QT_MOC_LITERAL(2, 23, 0), // ""
+QT_MOC_LITERAL(3, 24, 12) // "showQuestion"
 
     },
-    "forgetPwd\0UserAppealing\0\0editPwd"
+    "safeQuestion\0safeCheck\0\0showQuestion"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_forgetPwd[] = {
+static const uint qt_meta_data_safeQuestion[] = {
 
  // content:
        7,       // revision
@@ -63,39 +63,39 @@ static const uint qt_meta_data_forgetPwd[] = {
        0        // eod
 };
 
-void forgetPwd::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void safeQuestion::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        forgetPwd *_t = static_cast<forgetPwd *>(_o);
+        safeQuestion *_t = static_cast<safeQuestion *>(_o);
         switch (_id) {
-        case 0: _t->UserAppealing(); break;
-        case 1: _t->editPwd(); break;
+        case 0: _t->safeCheck(); break;
+        case 1: _t->showQuestion(); break;
         default: ;
         }
     }
     Q_UNUSED(_a);
 }
 
-const QMetaObject forgetPwd::staticMetaObject = {
-    { &QDialog::staticMetaObject, qt_meta_stringdata_forgetPwd.data,
-      qt_meta_data_forgetPwd,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+const QMetaObject safeQuestion::staticMetaObject = {
+    { &QDialog::staticMetaObject, qt_meta_stringdata_safeQuestion.data,
+      qt_meta_data_safeQuestion,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
-const QMetaObject *forgetPwd::metaObject() const
+const QMetaObject *safeQuestion::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *forgetPwd::qt_metacast(const char *_clname)
+void *safeQuestion::qt_metacast(const char *_clname)
 {
     if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_forgetPwd.stringdata))
-        return static_cast<void*>(const_cast< forgetPwd*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_safeQuestion.stringdata))
+        return static_cast<void*>(const_cast< safeQuestion*>(this));
     return QDialog::qt_metacast(_clname);
 }
 
-int forgetPwd::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int safeQuestion::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)

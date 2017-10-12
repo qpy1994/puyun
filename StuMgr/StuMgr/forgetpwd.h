@@ -5,6 +5,9 @@
 #include "ui_forgetpwd.h"
 #include "QMessageBox"
 #include "stuSql.h"
+#include "userappeal.h"
+#include "teacherSql.h"
+#include "safequestion.h"
 
 class forgetPwd : public QDialog
 {
@@ -17,13 +20,13 @@ public:
 private:
 	Ui::forgetPwd ui;
 	stuSql stusql;
-	int errorId = 0;
-	student stu;
-	bool flag = true;
+	teacherSql tsql;
+	UserAppeal *ua;
+	safeQuestion *sq;
 
 private slots:
+	void UserAppealing();
 	void editPwd();
-	void changePwd();
 	
 };
 

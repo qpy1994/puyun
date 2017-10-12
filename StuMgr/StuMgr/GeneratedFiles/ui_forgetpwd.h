@@ -16,73 +16,43 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
-#include <QtWidgets/QPushButton>
+#include <mylabel.h>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_forgetPwd
 {
 public:
-    QLabel *questionLab;
-    QLineEdit *answerEdit;
-    QPushButton *okBtn;
-    QPushButton *cancelBtn;
-    QLabel *idlabel;
-    QLineEdit *idlineEdit;
-    QLabel *pwdLab;
-    QLineEdit *pwdlineEdit;
-    QLabel *pwdLab2;
-    QLineEdit *pwdlineEdit2;
+    QLabel *label;
+    myLabel *AppealLab;
+    myLabel *safeLabel;
 
     void setupUi(QDialog *forgetPwd)
     {
         if (forgetPwd->objectName().isEmpty())
             forgetPwd->setObjectName(QStringLiteral("forgetPwd"));
         forgetPwd->resize(509, 366);
-        questionLab = new QLabel(forgetPwd);
-        questionLab->setObjectName(QStringLiteral("questionLab"));
-        questionLab->setGeometry(QRect(120, 80, 301, 61));
-        answerEdit = new QLineEdit(forgetPwd);
-        answerEdit->setObjectName(QStringLiteral("answerEdit"));
-        answerEdit->setGeometry(QRect(130, 150, 231, 41));
-        okBtn = new QPushButton(forgetPwd);
-        okBtn->setObjectName(QStringLiteral("okBtn"));
-        okBtn->setGeometry(QRect(140, 230, 91, 41));
-        cancelBtn = new QPushButton(forgetPwd);
-        cancelBtn->setObjectName(QStringLiteral("cancelBtn"));
-        cancelBtn->setGeometry(QRect(260, 230, 91, 41));
-        idlabel = new QLabel(forgetPwd);
-        idlabel->setObjectName(QStringLiteral("idlabel"));
-        idlabel->setGeometry(QRect(140, 80, 61, 21));
-        idlineEdit = new QLineEdit(forgetPwd);
-        idlineEdit->setObjectName(QStringLiteral("idlineEdit"));
-        idlineEdit->setGeometry(QRect(202, 80, 141, 20));
-        pwdLab = new QLabel(forgetPwd);
-        pwdLab->setObjectName(QStringLiteral("pwdLab"));
-        pwdLab->setGeometry(QRect(138, 130, 61, 21));
-        pwdlineEdit = new QLineEdit(forgetPwd);
-        pwdlineEdit->setObjectName(QStringLiteral("pwdlineEdit"));
-        pwdlineEdit->setGeometry(QRect(200, 130, 141, 20));
-        pwdLab2 = new QLabel(forgetPwd);
-        pwdLab2->setObjectName(QStringLiteral("pwdLab2"));
-        pwdLab2->setGeometry(QRect(138, 170, 61, 21));
-        pwdlineEdit2 = new QLineEdit(forgetPwd);
-        pwdlineEdit2->setObjectName(QStringLiteral("pwdlineEdit2"));
-        pwdlineEdit2->setGeometry(QRect(200, 170, 141, 20));
-        answerEdit->raise();
-        cancelBtn->raise();
-        okBtn->raise();
-        questionLab->raise();
-        idlabel->raise();
-        idlineEdit->raise();
-        pwdLab->raise();
-        pwdlineEdit->raise();
-        pwdLab2->raise();
-        pwdlineEdit2->raise();
+        label = new QLabel(forgetPwd);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(150, 50, 191, 41));
+        QFont font;
+        font.setPointSize(13);
+        label->setFont(font);
+        AppealLab = new myLabel(forgetPwd);
+        AppealLab->setObjectName(QStringLiteral("AppealLab"));
+        AppealLab->setGeometry(QRect(160, 120, 151, 31));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
+        font1.setPointSize(10);
+        font1.setBold(false);
+        font1.setWeight(50);
+        AppealLab->setFont(font1);
+        safeLabel = new myLabel(forgetPwd);
+        safeLabel->setObjectName(QStringLiteral("safeLabel"));
+        safeLabel->setGeometry(QRect(160, 180, 151, 31));
+        safeLabel->setFont(font1);
 
         retranslateUi(forgetPwd);
-        QObject::connect(cancelBtn, SIGNAL(clicked()), forgetPwd, SLOT(close()));
 
         QMetaObject::connectSlotsByName(forgetPwd);
     } // setupUi
@@ -90,13 +60,9 @@ public:
     void retranslateUi(QDialog *forgetPwd)
     {
         forgetPwd->setWindowTitle(QApplication::translate("forgetPwd", "forgetPwd", 0));
-        questionLab->setText(QApplication::translate("forgetPwd", "\350\257\267\345\233\236\347\255\224\345\257\206\344\277\235\351\227\256\351\242\230\357\274\214\346\235\245\347\241\256\350\256\244\350\272\253\344\273\275\357\274\214\351\207\215\347\275\256\345\257\206\347\240\201\357\274\232\n"
-"\346\234\254\350\275\257\344\273\266\347\232\204\344\275\234\350\200\205\346\230\257\350\260\201\357\274\237", 0));
-        okBtn->setText(QApplication::translate("forgetPwd", "\347\241\256\350\256\244", 0));
-        cancelBtn->setText(QApplication::translate("forgetPwd", "\345\217\226\346\266\210", 0));
-        idlabel->setText(QApplication::translate("forgetPwd", "\347\224\250\346\210\267\347\274\226\345\217\267\357\274\232", 0));
-        pwdLab->setText(QApplication::translate("forgetPwd", "\345\257\206    \347\240\201\357\274\232", 0));
-        pwdLab2->setText(QApplication::translate("forgetPwd", "\347\241\256\350\256\244\345\257\206\347\240\201\357\274\232", 0));
+        label->setText(QApplication::translate("forgetPwd", "\350\257\267\351\200\211\346\213\251\346\211\276\345\233\236\345\257\206\347\240\201\347\232\204\351\200\224\345\276\204\357\274\232", 0));
+        AppealLab->setText(QApplication::translate("forgetPwd", "<html><head/><body><p><span style=\" font-style:italic; color:#00aaff;\">1.\350\201\224\347\263\273\347\256\241\347\220\206\345\221\230/\347\224\263\350\257\211</span></p></body></html>", 0));
+        safeLabel->setText(QApplication::translate("forgetPwd", "<html><head/><body><p><span style=\" font-style:italic; color:#00aaff;\">2.\351\252\214\350\257\201\345\257\206\344\277\235\351\227\256\351\242\230</span></p></body></html>", 0));
     } // retranslateUi
 
 };
