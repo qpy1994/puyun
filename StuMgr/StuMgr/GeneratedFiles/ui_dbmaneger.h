@@ -70,7 +70,7 @@ public:
         exactsearch->setGeometry(QRect(390, 110, 75, 23));
         teacherlab = new QLabel(dbManeger);
         teacherlab->setObjectName(QStringLiteral("teacherlab"));
-        teacherlab->setGeometry(QRect(240, 100, 71, 16));
+        teacherlab->setGeometry(QRect(240, 100, 71, 20));
         teacheredit = new myLineEdit(dbManeger);
         teacheredit->setObjectName(QStringLiteral("teacheredit"));
         teacheredit->setGeometry(QRect(220, 120, 91, 20));
@@ -98,7 +98,7 @@ public:
         classlab->setText(QApplication::translate("dbManeger", "\347\217\255\347\272\247", 0));
         blursearch->setText(QApplication::translate("dbManeger", "\346\250\241\347\263\212\346\220\234\347\264\242", 0));
         exactsearch->setText(QApplication::translate("dbManeger", "\347\262\276\347\241\256\346\220\234\347\264\242", 0));
-        teacherlab->setText(QApplication::translate("dbManeger", "\344\273\273\350\257\276\346\225\231\345\270\210", 0));
+        teacherlab->setText(QApplication::translate("dbManeger", "\346\225\231\345\270\210\347\274\226\345\217\267", 0));
         showbtn->setText(QApplication::translate("dbManeger", "\346\237\245\347\234\213\345\205\250\351\203\250", 0));
         closebtn->setText(QApplication::translate("dbManeger", "\345\205\263\351\227\255\347\252\227\345\217\243", 0));
     } // retranslateUi

@@ -6,9 +6,9 @@
 #include "showlist.h"
 #include "SqliteSql.h"
 #include "forgetpwd.h"
-#include "adduser.h"
 #include "stuSql.h"
 #include "teacherSql.h"
+#include "choosetype.h"
 
 class StuMgr : public QMainWindow
 {
@@ -17,9 +17,9 @@ class StuMgr : public QMainWindow
 public:
 	StuMgr(QWidget *parent = 0);
 	~StuMgr();
-	showList sl;
-	forgetPwd fp;
-	addUser au;
+	showList *sl;
+	forgetPwd *fp;
+	chooseType *ct;
 
 private:
 	Ui::StuMgrClass ui;

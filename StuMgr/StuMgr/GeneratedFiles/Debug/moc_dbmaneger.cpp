@@ -9,6 +9,7 @@
 #include "../../dbmaneger.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
+#include <QtCore/QList>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'dbmaneger.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
@@ -19,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_dbManeger_t {
-    QByteArrayData data[6];
-    char stringdata[50];
+    QByteArrayData data[11];
+    char stringdata[98];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,11 +35,17 @@ QT_MOC_LITERAL(1, 10, 11), // "showAllUser"
 QT_MOC_LITERAL(2, 22, 0), // ""
 QT_MOC_LITERAL(3, 23, 9), // "bluSearch"
 QT_MOC_LITERAL(4, 33, 8), // "exSearch"
-QT_MOC_LITERAL(5, 42, 7) // "closeDB"
+QT_MOC_LITERAL(5, 42, 7), // "closeDB"
+QT_MOC_LITERAL(6, 50, 6), // "initDB"
+QT_MOC_LITERAL(7, 57, 7), // "writeDB"
+QT_MOC_LITERAL(8, 65, 14), // "QList<student>"
+QT_MOC_LITERAL(9, 80, 8), // "students"
+QT_MOC_LITERAL(10, 89, 8) // "initData"
 
     },
     "dbManeger\0showAllUser\0\0bluSearch\0"
-    "exSearch\0closeDB"
+    "exSearch\0closeDB\0initDB\0writeDB\0"
+    "QList<student>\0students\0initData"
 };
 #undef QT_MOC_LITERAL
 
@@ -48,7 +55,7 @@ static const uint qt_meta_data_dbManeger[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -56,15 +63,21 @@ static const uint qt_meta_data_dbManeger[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   34,    2, 0x08 /* Private */,
-       3,    0,   35,    2, 0x08 /* Private */,
-       4,    0,   36,    2, 0x08 /* Private */,
-       5,    0,   37,    2, 0x08 /* Private */,
+       1,    0,   49,    2, 0x08 /* Private */,
+       3,    0,   50,    2, 0x08 /* Private */,
+       4,    0,   51,    2, 0x08 /* Private */,
+       5,    0,   52,    2, 0x08 /* Private */,
+       6,    0,   53,    2, 0x08 /* Private */,
+       7,    1,   54,    2, 0x08 /* Private */,
+      10,    0,   57,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 8,    9,
     QMetaType::Void,
 
        0        // eod
@@ -79,10 +92,12 @@ void dbManeger::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 1: _t->bluSearch(); break;
         case 2: _t->exSearch(); break;
         case 3: _t->closeDB(); break;
+        case 4: _t->initDB(); break;
+        case 5: _t->writeDB((*reinterpret_cast< QList<student>(*)>(_a[1]))); break;
+        case 6: _t->initData(); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObject dbManeger::staticMetaObject = {
@@ -110,13 +125,13 @@ int dbManeger::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 7)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 4;
+        _id -= 7;
     }
     return _id;
 }

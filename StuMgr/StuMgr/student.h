@@ -15,7 +15,7 @@ private:
 	int  age;
 	QString  sex;
 	QString  classname;
-	int  t_id;
+	int  t_id = 0;
 
 public:
 	void setId(int id);

@@ -42,6 +42,8 @@ public:
     QLineEdit *pwdEdit;
     QLabel *subjectLab;
     QLineEdit *subjectLineEdit;
+    QLabel *tidLab;
+    QLineEdit *tidEdit;
 
     void setupUi(QDialog *addUser)
     {
@@ -59,7 +61,7 @@ public:
         ageLab->setGeometry(QRect(80, 220, 54, 12));
         sexComboBox = new QComboBox(addUser);
         sexComboBox->setObjectName(QStringLiteral("sexComboBox"));
-        sexComboBox->setGeometry(QRect(438, 240, 51, 22));
+        sexComboBox->setGeometry(QRect(558, 240, 51, 22));
         namelineEdit = new QLineEdit(addUser);
         namelineEdit->setObjectName(QStringLiteral("namelineEdit"));
         namelineEdit->setGeometry(QRect(220, 130, 113, 20));
@@ -86,7 +88,7 @@ public:
         label->setFont(font);
         sexLab = new QLabel(addUser);
         sexLab->setObjectName(QStringLiteral("sexLab"));
-        sexLab->setGeometry(QRect(450, 220, 54, 12));
+        sexLab->setGeometry(QRect(570, 220, 54, 12));
         cancelBtn = new QPushButton(addUser);
         cancelBtn->setObjectName(QStringLiteral("cancelBtn"));
         cancelBtn->setGeometry(QRect(370, 310, 71, 41));
@@ -102,6 +104,12 @@ public:
         subjectLineEdit = new QLineEdit(addUser);
         subjectLineEdit->setObjectName(QStringLiteral("subjectLineEdit"));
         subjectLineEdit->setGeometry(QRect(220, 240, 113, 20));
+        tidLab = new QLabel(addUser);
+        tidLab->setObjectName(QStringLiteral("tidLab"));
+        tidLab->setGeometry(QRect(430, 210, 71, 21));
+        tidEdit = new QLineEdit(addUser);
+        tidEdit->setObjectName(QStringLiteral("tidEdit"));
+        tidEdit->setGeometry(QRect(400, 240, 113, 20));
 
         retranslateUi(addUser);
 
@@ -125,7 +133,8 @@ public:
         sexLab->setText(QApplication::translate("addUser", "\346\200\247\345\210\253", 0));
         cancelBtn->setText(QApplication::translate("addUser", "\345\205\263\351\227\255", 0));
         pwdLab->setText(QApplication::translate("addUser", "\345\257\206\347\240\201", 0));
-        subjectLab->setText(QApplication::translate("addUser", "\347\247\221\347\233\256", 0));
+        subjectLab->setText(QApplication::translate("addUser", "\346\225\231\346\216\210\347\247\221\347\233\256", 0));
+        tidLab->setText(QApplication::translate("addUser", "\346\225\231\345\270\210\347\274\226\345\217\267", 0));
     } // retranslateUi
 
 };

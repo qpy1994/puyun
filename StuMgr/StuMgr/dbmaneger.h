@@ -5,6 +5,7 @@
 #include "ui_dbmaneger.h"
 #include "qtablewidget.h"
 #include "stuSql.h"
+#include "qmessagebox"
 
 class dbManeger : public QDialog
 {
@@ -13,6 +14,12 @@ class dbManeger : public QDialog
 public:
 	dbManeger(QWidget *parent = 0);
 	~dbManeger();
+
+public:
+	int id;
+	QString name;
+	QString classname;
+	int tid;
 
 private:
 	Ui::dbManeger ui;
@@ -24,6 +31,9 @@ private slots:
 	void bluSearch();
 	void exSearch();
 	void closeDB();
+	void initDB();
+	void writeDB(QList<student> students);
+	void initData();
 };
 
 #endif // DBMANEGER_H
