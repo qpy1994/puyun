@@ -42,6 +42,8 @@ public:
     QLabel *picLab;
     QPushButton *DBBtn;
     QPushButton *teacherBtn;
+    QLabel *subLab;
+    myLineEdit *subEdit;
 
     void setupUi(QDialog *showList)
     {
@@ -102,6 +104,12 @@ public:
         teacherBtn = new QPushButton(showList);
         teacherBtn->setObjectName(QStringLiteral("teacherBtn"));
         teacherBtn->setGeometry(QRect(240, 320, 81, 41));
+        subLab = new QLabel(showList);
+        subLab->setObjectName(QStringLiteral("subLab"));
+        subLab->setGeometry(QRect(310, 180, 54, 12));
+        subEdit = new myLineEdit(showList);
+        subEdit->setObjectName(QStringLiteral("subEdit"));
+        subEdit->setGeometry(QRect(270, 200, 113, 20));
 
         retranslateUi(showList);
 
@@ -128,6 +136,7 @@ public:
         picLab->setText(QString());
         DBBtn->setText(QApplication::translate("showList", "\346\225\260\346\215\256\345\272\223\347\256\241\347\220\206", 0));
         teacherBtn->setText(QApplication::translate("showList", "\344\273\273\350\257\276\346\225\231\345\270\210", 0));
+        subLab->setText(QApplication::translate("showList", "\346\225\231\346\216\210\347\247\221\347\233\256", 0));
     } // retranslateUi
 
 };

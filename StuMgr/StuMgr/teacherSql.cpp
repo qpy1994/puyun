@@ -63,14 +63,15 @@ teacher teacherSql::teacherlogin(QString name, QString pwd){
 		+ pwd + "'";
 	s_sql.getSql();
 	query = QSqlQuery::QSqlQuery(s_sql.db);
+	teacher myteacher;
 	if (!query.exec(sql))
 	{
 		qDebug() << "login faild!";
-		myteacher = teacher();
+		
 	}
 	else
 	{
-		teacher myteacher;
+		
 		while (query.next())
 		{
 			myteacher.setId(query.value("id").toInt());
@@ -145,5 +146,30 @@ int teacherSql::addteacher(teacher newteacher){
 		num = 1;
 	}
 	//s_sql.closeSql();
+	return num;
+}
+
+int teacherSql::editTeacher(teacher t){
+	int num = -1;
+	QString sql = "update teacher set name=:name,age=:age,sex=:sex,subject=:subject where id=:id";
+	s_sql.getSql();
+	query = QSqlQuery::QSqlQuery(s_sql.db);
+	query.prepare(sql);
+	query.bindValue(":name", t.getName());
+	//query.bindValue(":pwd", cstu.getPwd());
+	query.bindValue(":age", t.getAge());
+	query.bindValue(":sex", t.getSex());
+	query.bindValue(":subject", t.getSubject());
+	//query.bindValue(":t_id", cstu.getTid());
+	query.bindValue(":id", t.getId());
+	if (!query.exec())
+	{
+		qDebug() << "update teacher faild";
+		num = -1;
+	}
+	else
+	{
+		num = 1;
+	}
 	return num;
 }

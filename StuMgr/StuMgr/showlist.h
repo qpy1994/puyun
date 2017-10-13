@@ -6,6 +6,10 @@
 #include "QPixmap"
 #include "myLineEdit.h"
 #include "dbmaneger.h"
+#include "qdebug.h"
+#include "teacherSql.h"
+#include "showteacher.h"
+
 class showList : public QDialog
 {
 	Q_OBJECT
@@ -16,13 +20,16 @@ public:
 	Ui::showList ui;
 	bool flag = false;
 	dbManeger dbm;
+	showTeacher *st;
 
 private slots:
 	void infoEdit();
 	void closeEdit();
-	void saveEdit();
+	bool checkNull();
 	void dbEdit();
-	
+	void initEdit();
+	void changeBtn();
+	void showMyTeacher();
 };
 
 #endif // SHOWLIST_H

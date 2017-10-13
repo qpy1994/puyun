@@ -44,6 +44,7 @@ void StuMgr::login(){
 		int sex_id = 0;
 		icon.load("pic//0.bmp");
 		sl = new showList;
+		//teacher
 		if (ui.teacherradioButton->isChecked())
 		{
 			lv_id = 0;
@@ -51,11 +52,11 @@ void StuMgr::login(){
 			
 			if (teach.getName()==name&&teach.getPwd()==pwd)
 			{
-				
 				flag = true;
 				sl->ui.classlineEdit->hide();
 				sl->ui.classLab->hide();
 				sl->ui.teacherBtn->hide();
+				sl->ui.subEdit->setText(teach.getSubject());
 				sl->ui.idlineEdit->setText(QString::number(teach.getId()));
 				sl->ui.namelineEdit->setText(teach.getName());
 				sl->ui.agelineEdit->setText(QString::number(teach.getAge()));
@@ -71,7 +72,7 @@ void StuMgr::login(){
 				QMessageBox::warning(NULL, "warning", "用户名或密码错误", QMessageBox::Yes | QMessageBox::NoButton, QMessageBox::NoButton);
 			}
 			
-		}
+		}//student
 		else if (ui.sturadioButton->isChecked())
 		{
 			lv_id = 1;
@@ -80,6 +81,8 @@ void StuMgr::login(){
 			if (stu.getName()==name&&stu.getPwd()==pwd)
 			{
 				flag = true;
+				sl->ui.subEdit->hide();
+				sl->ui.subLab->hide();
 				sl->ui.classlineEdit->setText(stu.getClassname());
 				sl->ui.classlineEdit->setReadOnly(true);
 				sl->ui.DBBtn->hide();
