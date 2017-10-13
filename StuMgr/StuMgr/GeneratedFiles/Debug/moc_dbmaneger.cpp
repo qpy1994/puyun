@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_dbManeger_t {
-    QByteArrayData data[11];
-    char stringdata[98];
+    QByteArrayData data[15];
+    char stringdata[144];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,12 +40,18 @@ QT_MOC_LITERAL(6, 50, 6), // "initDB"
 QT_MOC_LITERAL(7, 57, 7), // "writeDB"
 QT_MOC_LITERAL(8, 65, 14), // "QList<student>"
 QT_MOC_LITERAL(9, 80, 8), // "students"
-QT_MOC_LITERAL(10, 89, 8) // "initData"
+QT_MOC_LITERAL(10, 89, 8), // "initData"
+QT_MOC_LITERAL(11, 98, 6), // "delStu"
+QT_MOC_LITERAL(12, 105, 15), // "slotitemClicked"
+QT_MOC_LITERAL(13, 121, 17), // "QTableWidgetItem*"
+QT_MOC_LITERAL(14, 139, 4) // "item"
 
     },
     "dbManeger\0showAllUser\0\0bluSearch\0"
     "exSearch\0closeDB\0initDB\0writeDB\0"
-    "QList<student>\0students\0initData"
+    "QList<student>\0students\0initData\0"
+    "delStu\0slotitemClicked\0QTableWidgetItem*\0"
+    "item"
 };
 #undef QT_MOC_LITERAL
 
@@ -55,7 +61,7 @@ static const uint qt_meta_data_dbManeger[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -63,13 +69,15 @@ static const uint qt_meta_data_dbManeger[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   49,    2, 0x08 /* Private */,
-       3,    0,   50,    2, 0x08 /* Private */,
-       4,    0,   51,    2, 0x08 /* Private */,
-       5,    0,   52,    2, 0x08 /* Private */,
-       6,    0,   53,    2, 0x08 /* Private */,
-       7,    1,   54,    2, 0x08 /* Private */,
-      10,    0,   57,    2, 0x08 /* Private */,
+       1,    0,   59,    2, 0x08 /* Private */,
+       3,    0,   60,    2, 0x08 /* Private */,
+       4,    0,   61,    2, 0x08 /* Private */,
+       5,    0,   62,    2, 0x08 /* Private */,
+       6,    0,   63,    2, 0x08 /* Private */,
+       7,    1,   64,    2, 0x08 /* Private */,
+      10,    0,   67,    2, 0x08 /* Private */,
+      11,    0,   68,    2, 0x08 /* Private */,
+      12,    1,   69,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -79,6 +87,8 @@ static const uint qt_meta_data_dbManeger[] = {
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 8,    9,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 13,   14,
 
        0        // eod
 };
@@ -95,6 +105,8 @@ void dbManeger::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 4: _t->initDB(); break;
         case 5: _t->writeDB((*reinterpret_cast< QList<student>(*)>(_a[1]))); break;
         case 6: _t->initData(); break;
+        case 7: _t->delStu(); break;
+        case 8: _t->slotitemClicked((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -125,13 +137,13 @@ int dbManeger::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 9)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 7;
+        _id -= 9;
     }
     return _id;
 }

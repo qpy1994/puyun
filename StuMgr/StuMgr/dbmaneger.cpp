@@ -1,5 +1,7 @@
 #include "dbmaneger.h"
 
+
+
 #pragma execution_character_set("utf-8")
 
 dbManeger::dbManeger(QWidget *parent)
@@ -12,6 +14,8 @@ dbManeger::dbManeger(QWidget *parent)
 	connect(ui.showbtn, SIGNAL(clicked()), this, SLOT(showAllUser()));
 	connect(ui.blursearch, SIGNAL(clicked()), this, SLOT(bluSearch()));
 	connect(ui.exactsearch, SIGNAL(clicked()), this, SLOT(exSearch()));
+	connect(ui.closebtn, SIGNAL(clicked()), this, SLOT(closeDB()));
+	connect(ui.delBtn, SIGNAL(clicked()), this, SLOT(delStu()));
 }
 
 dbManeger::~dbManeger()
@@ -19,18 +23,61 @@ dbManeger::~dbManeger()
 
 }
 
+//删除学生
+void dbManeger::delStu(){
+	QList<QTableWidgetSelectionRange>ranges = ui.tableWidget->selectedRanges();
+	int count = ranges.count();
+	for (int i = 0; i < count; i++)
+	{
+		int topRow = ranges.at(i).topRow();
+		int bottomRow = ranges.at(i).bottomRow();
+		for (int j = topRow; j <= bottomRow; j++)
+		{
+			qDebug() << "selectRow" << j;
+		}
+	}
+}
+
+void dbManeger::slotitemClicked(QTableWidgetItem * item)
+{
+	Idlist = new QList < int >;
+	if (item)
+	{
+		QWidget* pwid = ui.tableWidget->cellWidget(item->row(), 0);
+		QCheckBox *pckeckbox = (QCheckBox*)pwid;
+		if (pckeckbox)
+		{
+			bool flag = pckeckbox->checkState() == Qt::Checked;
+			if (flag)
+			{
+				int row_id = item->data(2).toInt();
+				//int count_id = item->data(0).toInt();
+				Idlist->append(row_id);
+				flag = false;
+			}
+			
+		}
+		
+	}
+}
+
 //初始化列表
 void dbManeger::initDB(){
+	
 	ui.tableWidget->clear();
 	ui.tableWidget->setColumnCount(7);
 	//设置列标题
 	QStringList headerLabels;
-	headerLabels << "id" << "name" << "age" << "sex" << "class" << "lv_id" << "t_id";
+	headerLabels <<"" <<"id" << "name" << "age" << "sex" << "class"  << "t_id";
 	ui.tableWidget->setHorizontalHeaderLabels(headerLabels);
 	ui.tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	ui.tableWidget->setRowCount(0);
-	ui.tableWidget->horizontalHeader()->setStretchLastSection(true); //就是这个地方
+	ui.tableWidget->horizontalHeader()->setStretchLastSection(true); 
 	ui.tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+	ui.tableWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
+	ui.tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+	connect(ui.tableWidget, SIGNAL(itemClicked(QTableWidgetItem *)), this, SLOT(slotitemClicked(QTableWidgetItem *)));
+	
 }
 
 void dbManeger::writeDB(QList<student> students){
@@ -39,7 +86,7 @@ void dbManeger::writeDB(QList<student> students){
 	for (int i = 0; i < students.size(); i++)
 	{
 
-		QTableWidgetItem *item0, *item1, *item2, *item3, *item4, *item5, *item6;
+		QTableWidgetItem  *item0, *item1, *item2, *item3, *item4, *item5, *item6,*item7;
 		item0 = new QTableWidgetItem();
 		item1 = new QTableWidgetItem();
 		item2 = new QTableWidgetItem();
@@ -47,30 +94,35 @@ void dbManeger::writeDB(QList<student> students){
 		item4 = new QTableWidgetItem();
 		item5 = new QTableWidgetItem();
 		item6 = new QTableWidgetItem();
+		item7 = new QTableWidgetItem();
+
+		selectId = new QCheckBox;
+		
+		ui.tableWidget->setCellWidget(i, 0, selectId);
 
 		QString txt = QString::number(students[i].getId());
 		item0->setText(txt);
-		ui.tableWidget->setItem(i, 0, item0);
+		ui.tableWidget->setItem(i, 1, item0);
 
 		txt = students[i].getName();
 		item1->setText(txt);
-		ui.tableWidget->setItem(i, 1, item1);
+		ui.tableWidget->setItem(i, 2, item1);
 
 		txt = QString::number(students[i].getAge());
 		item2->setText(txt);
-		ui.tableWidget->setItem(i, 2, item2);
+		ui.tableWidget->setItem(i, 3, item2);
 
 		txt = students[i].getSex();
 		item3->setText(txt);
-		ui.tableWidget->setItem(i, 3, item3);
+		ui.tableWidget->setItem(i, 4, item3);
 
 		txt = students[i].getClassname();
 		item4->setText(txt);
-		ui.tableWidget->setItem(i, 4, item4);
+		ui.tableWidget->setItem(i, 5, item4);
 
-		txt = QString::number(students[i].getLvid());
-		item5->setText(txt);
-		ui.tableWidget->setItem(i, 5, item5);
+// 		txt = QString::number(students[i].getLvid());
+// 		item5->setText(txt);
+// 		ui.tableWidget->setItem(i, 6, item5);
 
 		txt = QString::number(students[i].getTid());
 		item6->setText(txt);
@@ -153,4 +205,6 @@ void dbManeger::exSearch(){
 	}
 }
 
-void dbManeger::closeDB(){}
+void dbManeger::closeDB(){
+	close();
+}

@@ -6,6 +6,8 @@
 #include "qtablewidget.h"
 #include "stuSql.h"
 #include "qmessagebox"
+#include "qcheckbox.h"
+#include "QTableWidget"
 
 class dbManeger : public QDialog
 {
@@ -20,11 +22,13 @@ public:
 	QString name;
 	QString classname;
 	int tid;
+	QList<int> * Idlist;
 
 private:
 	Ui::dbManeger ui;
 	//QTableWidget * qtable;
 	stuSql ssql;
+	QCheckBox * selectId;
 
 private slots:
 	void showAllUser();
@@ -34,6 +38,8 @@ private slots:
 	void initDB();
 	void writeDB(QList<student> students);
 	void initData();
+	void delStu();
+	void slotitemClicked(QTableWidgetItem * item);
 };
 
 #endif // DBMANEGER_H

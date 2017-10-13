@@ -38,6 +38,8 @@ public:
     QPushButton *showbtn;
     QPushButton *closebtn;
     QTableWidget *tableWidget;
+    QPushButton *delBtn;
+    QPushButton *cancelBtn;
 
     void setupUi(QDialog *dbManeger)
     {
@@ -82,7 +84,13 @@ public:
         closebtn->setGeometry(QRect(510, 110, 75, 23));
         tableWidget = new QTableWidget(dbManeger);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
-        tableWidget->setGeometry(QRect(20, 180, 591, 261));
+        tableWidget->setGeometry(QRect(20, 180, 591, 241));
+        delBtn = new QPushButton(dbManeger);
+        delBtn->setObjectName(QStringLiteral("delBtn"));
+        delBtn->setGeometry(QRect(210, 430, 71, 41));
+        cancelBtn = new QPushButton(dbManeger);
+        cancelBtn->setObjectName(QStringLiteral("cancelBtn"));
+        cancelBtn->setGeometry(QRect(330, 430, 71, 41));
 
         retranslateUi(dbManeger);
         QObject::connect(closebtn, SIGNAL(clicked()), dbManeger, SLOT(close()));
@@ -101,6 +109,8 @@ public:
         teacherlab->setText(QApplication::translate("dbManeger", "\346\225\231\345\270\210\347\274\226\345\217\267", 0));
         showbtn->setText(QApplication::translate("dbManeger", "\346\237\245\347\234\213\345\205\250\351\203\250", 0));
         closebtn->setText(QApplication::translate("dbManeger", "\345\205\263\351\227\255\347\252\227\345\217\243", 0));
+        delBtn->setText(QApplication::translate("dbManeger", "\345\210\240\351\231\244", 0));
+        cancelBtn->setText(QApplication::translate("dbManeger", "\345\217\226\346\266\210", 0));
     } // retranslateUi
 
 };
