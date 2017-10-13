@@ -21,5 +21,6 @@ public:
 	int addteacher(teacher newteacher);
 	QList<QString> safequestion(int id);
 	int editPwd(int id, QString pwd);
+	int editTeacher(teacher t);
 };
 

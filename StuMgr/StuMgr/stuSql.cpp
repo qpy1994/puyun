@@ -118,16 +118,16 @@ int stuSql::deleteStu(int sid){
 //修改学生信息
 int stuSql::changeStu(student cstu){
 	int num = 0;
-	QString sql = "update student set name = :name,pwd = :pwd,age = :age,sex = :sex,class = :class,t_id = :tid  where id = :id";
+	QString sql = "update student set name = :name,age = :age,sex = :sex,class = :class  where id = :id";
 	s_sql.getSql();
 	query = QSqlQuery::QSqlQuery(s_sql.db);
 	query.prepare(sql);
 	query.bindValue(":name", cstu.getName());
-	query.bindValue(":pwd", cstu.getPwd());
+	//query.bindValue(":pwd", cstu.getPwd());
 	query.bindValue(":age", cstu.getAge());
 	query.bindValue(":sex", cstu.getSex());
 	query.bindValue(":class", cstu.getClassname());
-	query.bindValue(":t_id", cstu.getTid());
+	//query.bindValue(":t_id", cstu.getTid());
 	query.bindValue(":id", cstu.getId());
 	if (!query.exec())
 	{
@@ -375,3 +375,23 @@ QList<QString> stuSql::safeQuestion(int id){
 	return list;
 }
 
+int stuSql::findTid(int id){
+	int tid = 0;
+	s_sql.getSql();
+	query = QSqlQuery::QSqlQuery(s_sql.db);
+	QString sql = "select * from student where id=" + QString::number(id);
+	if (!query.exec(sql))
+	{
+		qDebug() << "student  search fail";
+	}
+	else
+	{
+		
+		while (query.next())
+		{
+			tid = query.value("t_id").toInt();
+		
+		}
+	}
+	return tid;
+}

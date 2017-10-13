@@ -234,6 +234,29 @@
     <string>任课教师</string>
    </property>
   </widget>
+  <widget class="QLabel" name="subLab">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>180</y>
+     <width>54</width>
+     <height>12</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>教授科目</string>
+   </property>
+  </widget>
+  <widget class="myLineEdit" name="subEdit">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>200</y>
+     <width>113</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>

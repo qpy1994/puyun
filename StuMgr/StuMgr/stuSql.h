@@ -25,5 +25,6 @@ public:
 	QList<student> exactSearch(int id,QString name,QString classname,int tid);
 	QList<QString> safeQuestion(int id);
 	int editPwd(int id,QString pwd);
+	int findTid(int id);
 };
 
