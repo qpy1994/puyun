@@ -114,11 +114,11 @@
      <x>240</x>
      <y>100</y>
      <width>71</width>
-     <height>16</height>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>任课教师</string>
+    <string>教师编号</string>
    </property>
   </widget>
   <widget class="myLineEdit" name="teacheredit">

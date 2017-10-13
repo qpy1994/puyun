@@ -21,7 +21,9 @@ public:
 	int deleteStu(int sid);
 	int changeStu(student cstu);
 	QList<student> showAllStu();
-	QList<student> sluSearch(student sluStu);
-	QList<student> exactSearch(student sluStu);
+	QList<student> sluSearch(int id, QString name, QString classname, int tid);
+	QList<student> exactSearch(int id,QString name,QString classname,int tid);
+	QList<QString> safeQuestion(int id);
+	int editPwd(int id,QString pwd);
 };
 

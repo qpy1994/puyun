@@ -11,6 +11,52 @@ teacherSql::~teacherSql()
 {
 }
 
+int teacherSql::editPwd(int id, QString pwd){
+	int num = -1;
+	QString sql = "update teacher set pwd='" + pwd + "'" + "where id=" + QString::number(id);
+	s_sql.getSql();
+	query = QSqlQuery::QSqlQuery(s_sql.db);
+	if (!query.exec(sql)){
+		qDebug() << "can not edit teacher password!";
+		num = 0;
+	}
+	else
+	{
+		qDebug() << "change teacher password success!";
+		num = 1;
+	}
+	return num;
+}
+
+QList<QString> teacherSql::safequestion(int id){
+	
+	QList<QString> list;
+	QString question;
+	QString answer;
+	s_sql.getSql();
+	query = QSqlQuery::QSqlQuery(s_sql.db);
+	QString sql = "select * from t_safe_question where id=" + QString::number(id);
+	if (!query.exec(sql))
+	{
+		qDebug() << "teacher question search fail";
+	}
+	else
+	{
+		while (query.next())
+		{
+			question = query.value("question").toString();
+			answer = query.value("answer").toString();
+			if ((!question.isEmpty()) && (!answer.isEmpty()))
+			{
+				list.append(question);
+				list.append(answer);
+			}
+		}
+	}
+	return list;
+	
+}
+
 teacher teacherSql::teacherlogin(QString name, QString pwd){
 	
 	QString sql = "select * from teacher where name='" + name + "' and pwd ='"
@@ -24,6 +70,7 @@ teacher teacherSql::teacherlogin(QString name, QString pwd){
 	}
 	else
 	{
+		teacher myteacher;
 		while (query.next())
 		{
 			myteacher.setId(query.value("id").toInt());
@@ -42,24 +89,26 @@ teacher teacherSql::teacherlogin(QString name, QString pwd){
 
 teacher teacherSql::findteacher(int tid){
 	
-	QString sql = "select * from teacher where id=" + tid;
+	QString sql = "select * from teacher where id=" +QString::number(tid);
 	s_sql.getSql();
-	s_sql.searchSql(sql);
-	if (!s_sql.searchSql(sql).exec())
+	QSqlQuery query = s_sql.searchSql(sql);
+	teacher myteacher;
+	if (!query.exec())
 	{
 		qDebug() << "can not find teacher";
 	}
 	else
 	{
-		while (s_sql.searchSql(sql).next())
+		
+		while (query.next())
 		{
-			myteacher.setId(s_sql.searchSql(sql).value("id").toInt());
-			myteacher.setName(s_sql.searchSql(sql).value("name").toString());
-			myteacher.setPwd(s_sql.searchSql(sql).value("pwd").toString());
-			myteacher.setAge(s_sql.searchSql(sql).value("age").toInt());
-			myteacher.setLvid(s_sql.searchSql(sql).value("lv_id").toInt());
-			myteacher.setSubject(s_sql.searchSql(sql).value("subject").toString());
-			myteacher.setSex(s_sql.searchSql(sql).value("sex").toString());
+			myteacher.setId(query.value("id").toInt());
+			myteacher.setName(query.value("name").toString());
+			myteacher.setPwd(query.value("pwd").toString());
+			myteacher.setAge(query.value("age").toInt());
+			myteacher.setLvid(query.value("lv_id").toInt());
+			myteacher.setSubject(query.value("subject").toString());
+			myteacher.setSex(query.value("sex").toString());
 		}
 	}
 	
@@ -68,9 +117,9 @@ teacher teacherSql::findteacher(int tid){
 
 int teacherSql::addteacher(teacher newteacher){
 	int num = 0;
-	QString sql = "insert into teacher (id,name,pwd,age,sex,subject) valuse(?,?,?,?,?,?)";
+	QString sql = "insert into teacher (id,name,pwd,age,sex,subject) values(?,?,?,?,?,?)";
 	s_sql.getSql();
-	query = QSqlQuery("MyDataBase.db");
+	query = QSqlQuery::QSqlQuery(s_sql.db);
 	query.prepare(sql);
 	if (newteacher.getId() == 0)
 	{
@@ -95,6 +144,6 @@ int teacherSql::addteacher(teacher newteacher){
 	{
 		num = 1;
 	}
-	s_sql.closeSql();
+	//s_sql.closeSql();
 	return num;
 }

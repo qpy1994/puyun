@@ -19,5 +19,7 @@ public:
 	teacher teacherlogin(QString name,QString pwd);
 	teacher findteacher(int tid);
 	int addteacher(teacher newteacher);
+	QList<QString> safequestion(int id);
+	int editPwd(int id, QString pwd);
 };
 

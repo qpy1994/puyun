@@ -17,13 +17,15 @@ StuMgr::~StuMgr()
 }
 
 void StuMgr::forget(){
-	StuMgr::hide();
-	fp.show();
+	//StuMgr::hide();
+	fp = new forgetPwd;
+	fp->show();
 }
 
 void StuMgr::addNewUser(){
-	StuMgr::hide();
-	au.show();
+	//StuMgr::hide();
+	ct = new chooseType;
+	ct->show();
 }
 
 
@@ -41,6 +43,7 @@ void StuMgr::login(){
 		QPixmap  icon;
 		int sex_id = 0;
 		icon.load("pic//0.bmp");
+		sl = new showList;
 		if (ui.teacherradioButton->isChecked())
 		{
 			lv_id = 0;
@@ -50,12 +53,12 @@ void StuMgr::login(){
 			{
 				
 				flag = true;
-				sl.ui.classlineEdit->hide();
-				sl.ui.classLab->hide();
-				sl.ui.teacherBtn->hide();
-				sl.ui.idlineEdit->setText(QString::number(teach.getId()));
-				sl.ui.namelineEdit->setText(teach.getName());
-				sl.ui.agelineEdit->setText(QString::number(teach.getAge()));
+				sl->ui.classlineEdit->hide();
+				sl->ui.classLab->hide();
+				sl->ui.teacherBtn->hide();
+				sl->ui.idlineEdit->setText(QString::number(teach.getId()));
+				sl->ui.namelineEdit->setText(teach.getName());
+				sl->ui.agelineEdit->setText(QString::number(teach.getAge()));
 				if (teach.getSex().contains("男"))
 				{
 					icon.load("pic//1.bmp");
@@ -77,18 +80,18 @@ void StuMgr::login(){
 			if (stu.getName()==name&&stu.getPwd()==pwd)
 			{
 				flag = true;
-				sl.ui.classlineEdit->setText(stu.getClassname());
-				sl.ui.classlineEdit->setReadOnly(true);
-				sl.ui.DBBtn->hide();
+				sl->ui.classlineEdit->setText(stu.getClassname());
+				sl->ui.classlineEdit->setReadOnly(true);
+				sl->ui.DBBtn->hide();
 				if (stu.getSex()=="男")
 				{
 					icon.load("pic//1.bmp");
 					sex_id = 1;
 				}
-				sl.ui.idlineEdit->setText(QString::number(stu.getId()));
-				sl.ui.namelineEdit->setText(stu.getName());
-				sl.ui.agelineEdit->setText(QString::number(stu.getAge()));
-				sl.ui.classlineEdit->setText(stu.getClassname());
+				sl->ui.idlineEdit->setText(QString::number(stu.getId()));
+				sl->ui.namelineEdit->setText(stu.getName());
+				sl->ui.agelineEdit->setText(QString::number(stu.getAge()));
+				sl->ui.classlineEdit->setText(stu.getClassname());
 			} 
 			else
 			{
@@ -102,15 +105,14 @@ void StuMgr::login(){
 		}
 		if (flag)
 		{
-			sl.ui.picLab->setPixmap(icon);
-			sl.ui.picLab->resize(icon.width(), icon.height());
-			sl.ui.sexComboBox->setCurrentIndex(sex_id);
-			sl.ui.sexComboBox->setEnabled(false);
-			sl.show();
+			sl->ui.picLab->setPixmap(icon);
+			sl->ui.picLab->resize(icon.width(), icon.height());
+			sl->ui.sexComboBox->setCurrentIndex(sex_id);
+			sl->ui.sexComboBox->setEnabled(false);
+			sl->show();
 			ui.cancelBtn->clicked();
 		}
 		
 	}
 	
 }
-

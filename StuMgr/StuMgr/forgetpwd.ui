@@ -13,154 +13,75 @@
   <property name="windowTitle">
    <string>forgetPwd</string>
   </property>
-  <widget class="QLabel" name="questionLab">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>80</y>
-     <width>301</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>请回答密保问题，来确认身份，重置密码：
-本软件的作者是谁？</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="answerEdit">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>150</y>
-     <width>231</width>
+     <x>150</x>
+     <y>50</y>
+     <width>191</width>
      <height>41</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QPushButton" name="okBtn">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>230</y>
-     <width>91</width>
-     <height>41</height>
-    </rect>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
    </property>
    <property name="text">
-    <string>确认</string>
+    <string>请选择找回密码的途径：</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="cancelBtn">
+  <widget class="myLabel" name="AppealLab">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>230</y>
-     <width>91</width>
-     <height>41</height>
+     <x>160</x>
+     <y>120</y>
+     <width>151</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>黑体</family>
+     <pointsize>10</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
    </property>
    <property name="text">
-    <string>取消</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#00aaff;&quot;&gt;1.联系管理员/申诉&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QLabel" name="idlabel">
+  <widget class="myLabel" name="safeLabel">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>80</y>
-     <width>61</width>
-     <height>21</height>
+     <x>160</x>
+     <y>180</y>
+     <width>151</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>黑体</family>
+     <pointsize>10</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
    </property>
    <property name="text">
-    <string>用户编号：</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic; color:#00aaff;&quot;&gt;2.验证密保问题&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="idlineEdit">
-   <property name="geometry">
-    <rect>
-     <x>202</x>
-     <y>80</y>
-     <width>141</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="pwdLab">
-   <property name="geometry">
-    <rect>
-     <x>138</x>
-     <y>130</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>密    码：</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="pwdlineEdit">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>130</y>
-     <width>141</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="pwdLab2">
-   <property name="geometry">
-    <rect>
-     <x>138</x>
-     <y>170</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>确认密码：</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="pwdlineEdit2">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>170</y>
-     <width>141</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <zorder>answerEdit</zorder>
-  <zorder>cancelBtn</zorder>
-  <zorder>okBtn</zorder>
-  <zorder>questionLab</zorder>
-  <zorder>idlabel</zorder>
-  <zorder>idlineEdit</zorder>
-  <zorder>pwdLab</zorder>
-  <zorder>pwdlineEdit</zorder>
-  <zorder>pwdLab2</zorder>
-  <zorder>pwdlineEdit2</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>myLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">mylabel.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
- <connections>
-  <connection>
-   <sender>cancelBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>forgetPwd</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>304</x>
-     <y>260</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>304</x>
-     <y>380</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

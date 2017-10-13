@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_forgetPwd_t {
     QByteArrayData data[4];
-    char stringdata[29];
+    char stringdata[33];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -30,12 +30,12 @@ struct qt_meta_stringdata_forgetPwd_t {
 static const qt_meta_stringdata_forgetPwd_t qt_meta_stringdata_forgetPwd = {
     {
 QT_MOC_LITERAL(0, 0, 9), // "forgetPwd"
-QT_MOC_LITERAL(1, 10, 7), // "editPwd"
-QT_MOC_LITERAL(2, 18, 0), // ""
-QT_MOC_LITERAL(3, 19, 9) // "changePwd"
+QT_MOC_LITERAL(1, 10, 13), // "UserAppealing"
+QT_MOC_LITERAL(2, 24, 0), // ""
+QT_MOC_LITERAL(3, 25, 7) // "editPwd"
 
     },
-    "forgetPwd\0editPwd\0\0changePwd"
+    "forgetPwd\0UserAppealing\0\0editPwd"
 };
 #undef QT_MOC_LITERAL
 
@@ -68,8 +68,8 @@ void forgetPwd::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     if (_c == QMetaObject::InvokeMetaMethod) {
         forgetPwd *_t = static_cast<forgetPwd *>(_o);
         switch (_id) {
-        case 0: _t->editPwd(); break;
-        case 1: _t->changePwd(); break;
+        case 0: _t->UserAppealing(); break;
+        case 1: _t->editPwd(); break;
         default: ;
         }
     }

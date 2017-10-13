@@ -52,7 +52,7 @@
   <widget class="QComboBox" name="sexComboBox">
    <property name="geometry">
     <rect>
-     <x>438</x>
+     <x>558</x>
      <y>240</y>
      <width>51</width>
      <height>22</height>
@@ -159,7 +159,7 @@
   <widget class="QLabel" name="sexLab">
    <property name="geometry">
     <rect>
-     <x>450</x>
+     <x>570</x>
      <y>220</y>
      <width>54</width>
      <height>12</height>
@@ -215,13 +215,36 @@
     </rect>
    </property>
    <property name="text">
-    <string>科目</string>
+    <string>教授科目</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="subjectLineEdit">
    <property name="geometry">
     <rect>
      <x>220</x>
+     <y>240</y>
+     <width>113</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="tidLab">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>210</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>教师编号</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="tidEdit">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
      <y>240</y>
      <width>113</width>
      <height>20</height>

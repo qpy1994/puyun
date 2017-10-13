@@ -11,6 +11,24 @@ stuSql::~stuSql()
 {
 }
 
+//修改密码
+int stuSql::editPwd(int id,QString pwd){
+	int num = -1;
+	QString sql = "update student set pwd='"+pwd+"'"+"where id="+QString::number(id);
+	s_sql.getSql();
+	query = QSqlQuery::QSqlQuery(s_sql.db);
+	if (!query.exec(sql)){
+		qDebug() << "can not edit student password!";
+		num = 0;
+	}
+	else
+	{
+		qDebug() << "change student password success!";
+		num = 1;
+	}
+	return num;
+}
+
 //学生登录
 student stuSql::stu_login(QString name,QString pwd){
 	
@@ -39,13 +57,14 @@ student stuSql::stu_login(QString name,QString pwd){
 	
 
 	//s_sql.closeSql();
+	
 	return stu;
 }
 
 //增加学生名单
 int stuSql::insertStu(student addstu){
 	int num = 0;
-	QString sql = "insert into student (id,name,pwd,age,sex,class,t_id) valuse(?,?,?,?,?,?,?)";
+	QString sql = "insert into student (id,name,pwd,age,sex,class,t_id) values(?,?,?,?,?,?,?)";
 	s_sql.getSql();
 	query = QSqlQuery::QSqlQuery(s_sql.db);
 	query.prepare(sql);
@@ -72,6 +91,7 @@ int stuSql::insertStu(student addstu){
 	{
 		num = 1;
 	}
+	//s_sql.closeSql();
 	return num;
 }
 
@@ -91,7 +111,7 @@ int stuSql::deleteStu(int sid){
 	{
 		num = 1;
 	}
-	s_sql.closeSql();
+//	s_sql.closeSql();
 	return num;
 }
 
@@ -118,12 +138,13 @@ int stuSql::changeStu(student cstu){
 	{
 		num = 1;
 	}
+	//s_sql.closeSql();
 	return num;
 }
 
 //查找全部学生
 QList<student> stuSql::showAllStu(){
-	
+	QList<student> stuList;
 	QString sql = "select * from student";
 	s_sql.getSql();
 	query = QSqlQuery::QSqlQuery(s_sql.db);
@@ -149,57 +170,29 @@ QList<student> stuSql::showAllStu(){
 			stuList.append(showStu);
 		}
 	}
+	
 	return stuList;
 }
 
 //模糊查询
-QList<student> stuSql::sluSearch(student sluStu){
-	int i = 0;
+QList<student> stuSql::sluSearch(int id,QString name,QString classname,int tid){
 	
-	QString sql = "select * from student where\t";
-
-	if (sluStu.getId() > 0)
+	QString sql;
+	if (id==0&&name==""&&classname==""&&tid==0)
 	{
-		sql += "id = " + sluStu.getId();
-		sql += "\t or \t";
+		sql = "select * from student";
 	}
 	else{
+		sql = "select * from student where name = '" + name + "'or id = " + QString::number(id) + " or class = '" + classname
+			+ "'or t_id = " + QString::number(tid);
+	}
+	qDebug() << sql;
 
-		i++;
-	}
-
-	if (sluStu.getName().isEmpty())
-	{
-		i++;
-	}
-	else{
-		sql += "name = '" + sluStu.getName()+"',or\t";
-	}
-
-	
-	if (sluStu.getClassname().isEmpty())
-	{
-		i++;
-	}
-	else{
-		sql += "class = '" + sluStu.getClassname() + "',or\t";
-	}
-	if (sluStu.getTid()>0)
-	{
-		sql += "t_id = " + sluStu.getTid();
-	} 
-	else
-	{
-		i++;
-	}
-	if (i==4)
-	{
-		sql += "1=1";
-	}
+	QList<student> stuList;
 	s_sql.getSql();
 	query = QSqlQuery::QSqlQuery(s_sql.db);
 	//query.prepare(sql);
-	if (query.exec(sql))
+	if (!query.exec(sql))
 	{
 		qDebug() << "search student faild!";
 	}
@@ -219,58 +212,119 @@ QList<student> stuSql::sluSearch(student sluStu){
 			stuList.append(showStu);
 		}
 	}
+	
 	return stuList;
 }
 
 //精确查询
-QList<student> stuSql::exactSearch(student sluStu){
+QList<student> stuSql::exactSearch(int id, QString name, QString classname, int tid){
+	
 	int i = 0;
-	//stuList = new QList < student > ;
-	QString sql = "select * from student where\t";
-
-	if (sluStu.getId() > 0)
+	QString sql;
+	QList<student> stuList;
+	if (id == 0 && name == ""&&classname == ""&&tid == 0)
 	{
-		sql += "id = " + sluStu.getId();
-		sql += "\t and \t";
+		return stuList;
 	}
 	else{
+		int i = 0;
 
-		i++;
-	}
+		sql = "select * from student where id =";
 
-	if (sluStu.getName() == "")
-	{
-		i++;
-	}
-	else{
-		sql += "name = '" + sluStu.getName() + "',and\t";
-	}
+		if (id==0)
+		{
+			sql += "0 or ";
+		} 
+		else
+		{
+			sql += QString::number(id);
+			i = 1;
+		}
 
+		if (name == "")
+		{
+			if (i==1)
+			{
+				sql += " or name ='' or ";
+			} 
+			else
+			{
+				sql += "name ='' or ";
+			}
+			
+		}
+		else
+		{
+			if (i==1)
+			{
+				sql += " and  name ='" + name + "' ";
+				
+			}
+			else{
+				sql += "   name ='" + name + "' ";
+			}
+			
+			i = 2;
+		}
 
-	if (sluStu.getClassname() == "")
-	{
-		i++;
+		if (classname == "")
+		{
+			if (i==2)
+			{
+				sql += " or class ='' or ";
+			} 
+			else
+			{
+				sql += "class ='' or ";
+			}
+			
+		}
+		else
+		{
+			if (i==2)
+			{
+				sql += " and class ='" + classname + "' ";
+			} 
+			else
+			{
+				sql += "class='" + classname + "' ";
+			}
+			
+			i = 3;
+		}
+
+		if (tid == 0)
+		{
+			if (i==3)
+			{
+				sql += "or t_id = 0 ";
+			} 
+			else
+			{
+				sql += "t_id = 0 ";
+			}
+			
+		}
+		else
+		{
+			if (i>0)
+			{
+				sql += "and t_id =" + QString::number(tid);
+			} 
+			else
+			{
+				sql += " t_id = " + QString::number(tid);
+			}
+		}
+	//	sql = "select * from student where name = '" + name + "'or id = " + QString::number(id) + " or class = '" + classname
+	//		+ "'or t_id = " + QString::number(tid);
 	}
-	else{
-		sql += "class = '" + sluStu.getClassname() + "',and\t";
-	}
-	if (sluStu.getTid() > 0)
-	{
-		sql += "t_id = " + sluStu.getTid();
-	}
-	else
-	{
-		i++;
-	}
-	if (i == 0)
-	{
-		
-			return stuList;
-	}
+	qDebug() << sql;
+	
 	s_sql.getSql();
-	query = QSqlQuery(s_sql.db);
+	query = QSqlQuery::QSqlQuery(s_sql.db);
 	//query.prepare(sql);
-	if (query.exec(sql))
+	if (!query.exec(sql))
 	{
 		qDebug() << "search student faild!";
 	}
@@ -290,5 +344,34 @@ QList<student> stuSql::exactSearch(student sluStu){
 			stuList.append(showStu);
 		}
 	}
+	
 	return stuList;
 }
+
+QList<QString> stuSql::safeQuestion(int id){
+	QList<QString> list;
+	QString question,answer;
+	s_sql.getSql();
+	query = QSqlQuery::QSqlQuery(s_sql.db);
+	QString sql = "select * from stu_safe_question where id=" + QString::number(id);
+	if (!query.exec(sql))
+	{
+		qDebug() << "student question search fail";
+	} 
+	else
+	{
+		while (query.next())
+	{
+
+		question = query.value("question").toString();
+		answer = query.value("answer").toString();
+		if ((!question.isEmpty()) && (!answer.isEmpty()))
+		{
+			list.append(question);
+			list.append(answer);
+		}
+	}
+	}
+	return list;
+}
+

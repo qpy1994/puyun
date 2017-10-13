@@ -3,6 +3,9 @@
 
 #include <QDialog>
 #include "ui_adduser.h"
+#include "qmessagebox.h"
+#include "stuSql.h"
+#include "teacherSql.h"
 
 class addUser : public QDialog
 {
@@ -11,8 +14,16 @@ class addUser : public QDialog
 public:
 	addUser(QWidget *parent = 0);
 	~addUser();
-private:
 	Ui::addUser ui;
+
+private:
+	stuSql ssql;
+	teacherSql tsql;
+
+private slots:
+	void closeAddUser();
+	void addNewUser();
+	bool isCheckAdd();
 };
 
 #endif // ADDUSER_H

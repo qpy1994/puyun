@@ -1,8 +1,6 @@
 #pragma once
 #include "QString"
 
-
-
 class teacher
 {
 public:
@@ -13,7 +11,7 @@ public:
 private:
 	int id;
 	QString pwd;
-	int lv_id;
+	int lv_id=1;
 	int age;
 	QString sex;
 	QString subjectname;
